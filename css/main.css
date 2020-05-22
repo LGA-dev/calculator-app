@@ -1,0 +1,140 @@
+/* 
+======================================================
+00. Global variables
+01. Body
+02. Wrapper
+03. Calculator body
+	03.a Calculator screen
+	03.b Calculator buttons
+====================================================== 
+*/
+
+
+/* 00. Global variables */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--default-primary-color:#1d1d1d;
+	--screen-bg-color: rgb(95, 187, 59);
+	--screen-text-color: rgb(27, 27, 27);
+	--number-button-bg-color: rgb(128, 128, 128);
+	--operator-button-bg-color: rgb(59, 115, 187);
+	--equal-button-bg-color:  rgb(187, 59, 59);
+	--button-text-color: #ffffff;
+}
+
+/* 00. Global variables */
+
+
+
+/* 01. Body */
+
+body {
+	background: rgb(184,237,233);
+	background: radial-gradient(circle, rgba(184,237,233,1) 0%, rgba(88,135,190,1) 100%); 
+	color: var(--light-text-color);
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2rem;
+}
+
+/* 01. Body */
+
+
+
+/* 02. Wrapper */
+
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+/* 02. Wrapper */
+
+
+
+/* 03. Calculator body */
+
+.calculator-body {
+	display: grid;
+	grid-template-columns: 1fr;
+    grid-template-rows: 1.5fr 4fr;
+	gap: 0.5rem;
+	border-radius: 1rem;
+	width: 40vh;
+	height: 60vh;
+	padding: 1.5rem;
+	background-color: var(--default-primary-color);
+	border: 1px solid rgba(163, 163, 163, 0.2);
+	box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.35);
+}
+
+	/* 03.a Calculator screen */
+
+	.calculator-screen {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr 2fr;
+		align-items: center;
+		text-align: right;
+		border-radius: .25rem;
+		padding: 0 0.5rem;
+		background-color: var(--screen-bg-color);
+		color: var(--screen-text-color);
+	}
+
+	.calculator-screen > p {
+		font-family: 'DM Mono', monospace;
+	}
+
+	#output-normal {
+		font-size: 3rem;
+	}
+
+	#output-small {
+		font-size: 1rem;
+	}
+
+	/* 03.a Calculator screen */
+
+
+	/* 03.b Calculator buttons */
+
+	.calculator-buttons {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-template-rows: 1fr 1fr 1fr 1fr;
+		gap: 0.5rem;
+	}
+
+	.calculator-buttons > button {
+		color: var(--button-text-color);
+		font-family: 'Lato', sans-serif;
+		font-size: 2rem;
+		border: none;
+	}
+
+	.number-button {
+		background-color: var(--number-button-bg-color);
+	}
+
+	.operator-button {
+		background: var(--operator-button-bg-color);
+	}
+
+	.equal-button {
+		background: var(--equal-button-bg-color);
+	}
+
+	/* 03.b Calculator buttons */
+
+/* 03. Calculator body */
