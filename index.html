@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/mediaqueries.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Lato&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
                 <p class="calculator-output" id="output-normal"></p>
             </div>
             <div class="calculator-buttons">
-                <button class="number-button" onclick='storeValue(this.value);' value='#'><i class="fas fa-reply"></i></button>
-                <button class="number-button" onclick='storeValue(this.value);' value='#'>C</button>
-                <button class="number-button" onclick='storeValue(this.value);' value='#'><i class="fas fa-square-root-alt"></i></button>
+                <button class="number-button" onclick='deleteLastValue(this.value);' value='#'><i class="fas fa-reply"></i></button>
+                <button class="number-button" onclick='deleteAllValues(this.value);' value='#'>C</button>
+                <button class="number-button" onclick='squareRoot();' value=''><i class="fas fa-square-root-alt"></i></button>
                 <button class="operator-button" onclick='storeValue(this.value);' value='/'>/</button>
                 <button class="number-button" onclick='storeValue(this.value);' value='7'>7</button>
                 <button class="number-button" onclick='storeValue(this.value);' value='8'>8</button>
