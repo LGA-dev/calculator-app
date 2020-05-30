@@ -7,15 +7,15 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/mediaqueries.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Lato:wght@900&display=swap" rel="stylesheet"> 
     <script src="https://kit.fontawesome.com/bf3de74a9d.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="wrapper">
         <div class="calculator-card">
             <div class="calculator-screen">
-                <p class="screen-normal" id="output-normal">3</p>
-                <p class="screen-small"  id="output-small">1+2</p>
+                <p class="screen-small"  id="output-small"></p>
+                <p class="screen-normal" id="output-normal">0</p>
             </div>
             <div class="calculator-buttons">
                 <button class="button numbers number-zero"   onclick='storeValue(this.value);' value='0'>0</button>
@@ -33,12 +33,10 @@
                 <button class="button operators multiple"    onclick='storeValue(this.value);' value='*'>*</button>
                 <button class="button operators minus"       onclick='storeValue(this.value);' value='-'>-</button>
                 <button class="button operators plus"        onclick='storeValue(this.value);' value='+'>+</button>
-                <button class="button operators delete-one"  onclick='deleteLastValue();'      >Delete One</button>
-                <button class="button operators delete-all"  onclick='deleteAllValues();'      >Delete All</button>
-                <button class="button operators square-root" onclick='squareRoot();'          >Square root</button>
                 <button class="button equals"                onclick='calculateAll();'                  >=</button>
-                <!-- <button class="button square-root"  onclick='squareRoot();' ><i class="fas fa-square-root-alt"></i></button>
-                <button class="button delete-one"   onclick='deleteLastValue();' ><i class="fas fa-reply"></i></button> -->
+                <button class="button operators delete-all"  onclick='deleteAllValues();'               >C</button>
+                <button class="button operators delete-one"  onclick='deleteLastValue();'  ><i class="fas fa-backspace"></i></button>
+                <button class="button operators square-root" onclick='squareRoot();' ><i class="fas fa-square-root-alt"></i></button>
             </div>
         </div>
     </div>
