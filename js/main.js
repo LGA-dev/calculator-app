@@ -40,12 +40,8 @@ function deleteAllValues(){
 }
 
 function squareRoot() {
-    // output array is 25
-    squareRootResult = Math.sqrt(outputArray); // 5
-    // inputs array is [2,5]
-    // empty inputs array
+    squareRootResult = Math.sqrt(calculationResult);
     inputsArray = [];
-    // push square root results into the emptied array
     inputsArray.push(squareRootResult);
 
     document.getElementById('output-normal').innerHTML = squareRootResult;
@@ -62,6 +58,7 @@ function showOutput(){
 function calculateAll(){
     outputArray = inputsArray.join("");
     calculationResult = eval(outputArray);
+    inputsArray = [];
     document.getElementById('output-normal').innerHTML = calculationResult;
     document.getElementById('output-small').innerHTML = outputArray;
     log();
