@@ -90,6 +90,8 @@ body {
 		.screen-normal {
 			grid-area: screen-normal;
 			font-size: 5rem;
+			overflow: hidden;
+			text-overflow: clip;
 		}
 
 		.screen-small {
