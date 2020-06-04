@@ -18,22 +18,22 @@
                 <p class="screen-normal" id="output-normal">0</p>
             </div>
             <div class="calculator-buttons">
-                <button class="button numbers number-zero"   onclick='storeValue(this.value);' value='0'>0</button>
-                <button class="button numbers number-one"    onclick='storeValue(this.value);' value='1'>1</button>
-                <button class="button numbers number-two"    onclick='storeValue(this.value);' value='2'>2</button>
-                <button class="button numbers number-three"  onclick='storeValue(this.value);' value='3'>3</button>
-                <button class="button numbers number-four"   onclick='storeValue(this.value);' value='4'>4</button>
-                <button class="button numbers number-five"   onclick='storeValue(this.value);' value='5'>5</button>
-                <button class="button numbers number-six"    onclick='storeValue(this.value);' value='6'>6</button>
-                <button class="button numbers number-seven"  onclick='storeValue(this.value);' value='7'>7</button>
-                <button class="button numbers number-eight"  onclick='storeValue(this.value);' value='8'>8</button>
-                <button class="button numbers number-nine"   onclick='storeValue(this.value);' value='9'>9</button>
+                <button class="button numbers number-zero"   onclick='storeValue(parseInt(this.value));' value='0'>0</button>
+                <button class="button numbers number-one"    onclick='storeValue(parseInt(this.value));' value='1'>1</button>
+                <button class="button numbers number-two"    onclick='storeValue(parseInt(this.value));' value='2'>2</button>
+                <button class="button numbers number-three"  onclick='storeValue(parseInt(this.value));' value='3'>3</button>
+                <button class="button numbers number-four"   onclick='storeValue(parseInt(this.value));' value='4'>4</button>
+                <button class="button numbers number-five"   onclick='storeValue(parseInt(this.value));' value='5'>5</button>
+                <button class="button numbers number-six"    onclick='storeValue(parseInt(this.value));' value='6'>6</button>
+                <button class="button numbers number-seven"  onclick='storeValue(parseInt(this.value));' value='7'>7</button>
+                <button class="button numbers number-eight"  onclick='storeValue(parseInt(this.value));' value='8'>8</button>
+                <button class="button numbers number-nine"   onclick='storeValue(parseInt(this.value));' value='9'>9</button>
                 <button class="button numbers point"         onclick='storeValue(this.value);' value='.'>.</button>
                 <button class="button operators divisor"     onclick='storeValue(this.value);' value='/'>/</button>
                 <button class="button operators multiple"    onclick='storeValue(this.value);' value='*'>*</button>
                 <button class="button operators minus"       onclick='storeValue(this.value);' value='-'>-</button>
                 <button class="button operators plus"        onclick='storeValue(this.value);' value='+'>+</button>
-                <button class="button equals"                onclick='calculateAll();'                  >=</button>
+                <button class="button equals"                onclick='calculateAllArrayInputs();'                  >=</button>
                 <button class="button operators delete-all"  onclick='deleteAllValues();'               >C</button>
                 <button class="button operators delete-one"  onclick='deleteLastValue();'  ><i class="fas fa-backspace"></i></button>
                 <button class="button operators square-root" onclick='squareRoot();' ><i class="fas fa-square-root-alt"></i></button>
