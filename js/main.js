@@ -11,8 +11,6 @@ let inputsArray = [];
 let inputsArrayFirstItem = 0;
 let inputsArrayLastItem = 0;
 
-let copyArray = [];
-
 let screenNormalOutput = 0;
 let screenSmallOutput = 0;
 
@@ -27,7 +25,6 @@ let calculationResult = 0;
 function showOutput() {
     // Normal
     document.getElementById('output-normal').innerHTML = screenNormalOutput;
-
     // Small
     document.getElementById('output-small').innerHTML = screenSmallOutput;
 
@@ -36,23 +33,11 @@ function showOutput() {
 
 function storeValue(buttonValue) {
     inputsArray.push(buttonValue);
+
     inputsArrayLastItem = inputsArray[inputsArray.length - 1];
     inputsArrayFirstItem = inputsArray[0];
 
-    // screenNormalOutput = inputsArray.join("");
-    screenSmallOutput  = inputsArray.join("");
-
-/*
-    // Copy array
-    copyArray = inputsArray;
-    // Delete last value
-    copyArray.splice(-1,1)
-    // Return a new array without the last value and display it
-    screenSmallOutput = copyArray.join("")
-*/
-
-    //Normal Output Display
-
+    //Outputs display
     if (typeof inputsArrayLastItem == 'number') {
         console.log("Last input is a number");
         screenNormalOutput = buttonValue;
@@ -60,11 +45,12 @@ function storeValue(buttonValue) {
         console.log("Last input isn't a number");
         if (calculationResult == 0) {
             screenNormalOutput = inputsArrayFirstItem;
+            screenSmallOutput  = inputsArray.join("");
         } else {
             screenNormalOutput = calculationResult;
+            screenSmallOutput  = inputsArray.join("");
         }
     }
-    //
 
     calculateArrayInputs();
     showOutput();
@@ -82,13 +68,9 @@ function squareRoot() {
 
 function calculateArrayInputs() {
     if (inputsArray.length >= 2 && typeof inputsArrayLastItem == 'number') {
-        calculationResult = eval(inputsArray.join(""))
-        console.log("Inputs array items equal or more than 3 and it's a number!")
+        calculationResult = eval(inputsArray.join(""));
+        console.log("Inputs array items equal or more than 3 and it's a number!");
         console.log("autoCalculateInput is: " + calculationResult);
-
-        //
-
-        //
     } else {
         console.log("Inputs array items less than 3");
     }
@@ -100,14 +82,12 @@ function calculateAllArrayInputs() {
     calculationResult = eval(inputsArrayJoined); // !
     screenNormalOutput = calculationResult; // !
     screenSmallOutput = "";
-    showOutput();
-    log();
 }
 
 function deleteLastValue() {
     inputsArray.pop();
+
     showOutput();
-    log();
 }
 
 function deleteAllValues() {
@@ -115,8 +95,8 @@ function deleteAllValues() {
     screenNormalOutput = 0;
     screenSmallOutput = "";
     calculationResult = 0;
+
     showOutput();
-    log();
 }
 
 function log() {
