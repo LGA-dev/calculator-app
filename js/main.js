@@ -56,16 +56,6 @@ function storeValue(buttonValue) {
     showOutput();
 }
 
-/*
-function squareRoot() {
-    calculationResult = Math.sqrt(calculationResult);
-    inputsArray = []; // !
-    inputsArray.push(calculationResult);
-    showOutput();
-    log();
-}
-*/
-
 function calculateArrayInputs() {
     if (inputsArray.length >= 2 && typeof inputsArrayLastItem == 'number') {
         calculationResult = eval(inputsArray.join(""));
@@ -76,12 +66,12 @@ function calculateArrayInputs() {
     }
 }
 
-
 function calculateAllArrayInputs() {
-    inputsArrayJoined = inputsArray.join("");
-    calculationResult = eval(inputsArrayJoined); // !
+    calculationResult = eval(inputsArray.join("")); // !
     screenNormalOutput = calculationResult; // !
     screenSmallOutput = "";
+
+    showOutput();
 }
 
 function deleteLastValue() {
