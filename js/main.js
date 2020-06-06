@@ -10,6 +10,7 @@
 let inputsArray = [];
 let inputsArrayFirstItem = 0;
 let inputsArrayLastItem = 0;
+let lastFullNumber = [];
 
 let screenNormalOutput = 0;
 let screenSmallOutput = 0;
@@ -33,6 +34,7 @@ function showOutput() {
 
 function storeValue(buttonValue) {
     inputsArray.push(buttonValue);
+    lastFullNumber.push(buttonValue);
 
     inputsArrayLastItem = inputsArray[inputsArray.length - 1];
     inputsArrayFirstItem = inputsArray[0];
@@ -40,10 +42,12 @@ function storeValue(buttonValue) {
     //Outputs display
     if (typeof inputsArrayLastItem == 'number') {
         console.log("Last input is a number");
-        screenNormalOutput = buttonValue;
+        screenNormalOutput = lastFullNumber.join("");
         calculationResult = eval(inputsArray.join("")); //!
     } else {
         console.log("Last input isn't a number");
+        lastFullNumber = [];
+
         if (calculationResult == 0) {
             screenNormalOutput = inputsArrayFirstItem;
             screenSmallOutput  = inputsArray.join("");
@@ -93,6 +97,7 @@ function deleteAllValues() {
     screenNormalOutput = 0;
     screenSmallOutput = "";
     calculationResult = 0;
+    lastFullNumber = [];
 
     showOutput();
 }
