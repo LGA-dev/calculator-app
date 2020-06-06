@@ -41,6 +41,7 @@ function storeValue(buttonValue) {
     if (typeof inputsArrayLastItem == 'number') {
         console.log("Last input is a number");
         screenNormalOutput = buttonValue;
+        calculationResult = eval(inputsArray.join("")); //!
     } else {
         console.log("Last input isn't a number");
         if (calculationResult == 0) {
@@ -52,18 +53,7 @@ function storeValue(buttonValue) {
         }
     }
 
-    calculateArrayInputs();
     showOutput();
-}
-
-function calculateArrayInputs() {
-    if (inputsArray.length > 2 && typeof inputsArrayLastItem == 'number') {
-        calculationResult = eval(inputsArray.join(""));
-        console.log("Inputs array items equal or more than 3 and it's a number!");
-        console.log("autoCalculateInput is: " + calculationResult);
-    } else {
-        console.log("Inputs array items less than 3");
-    }
 }
 
 function calculateAllArrayInputs() {
@@ -77,8 +67,13 @@ function calculateAllArrayInputs() {
 }
 
 function squareRoot() {
-    sqrtResult = Math.sqrt(inputsArray.join(""));
-    sqrtOriginalNumber = inputsArray.join("");
+    if (calculationResult == 0) {
+        sqrtResult = Math.sqrt(inputsArray.join(""));
+        sqrtOriginalNumber = inputsArray.join("");
+    } else {
+        sqrtResult = Math.sqrt(calculationResult);
+        sqrtOriginalNumber = inputsArray.join("");
+    }
 
     screenNormalOutput = sqrtResult;
     screenSmallOutput  = "sqrt(" + sqrtOriginalNumber + ")";
