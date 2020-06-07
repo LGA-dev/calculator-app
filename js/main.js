@@ -78,13 +78,8 @@ function calculateAllInputsArray() {
 }
 
 function squareRoot() {
-    if (calculationResult == 0) {
-        sqrtResult = Math.sqrt(inputsArray.join(""));
-        sqrtOriginalNumber = inputsArray.join("");
-    } else {
-        sqrtResult = Math.sqrt(calculationResult);
-        sqrtOriginalNumber = inputsArray.join("");
-    }
+    sqrtResult = Math.sqrt(calculationResult);
+    sqrtOriginalNumber = calculationResult;
 
     screenNormalOutput = sqrtResult;
     screenSmallOutput  = "sqrt(" + sqrtOriginalNumber + ")";
