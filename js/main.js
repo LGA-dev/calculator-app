@@ -10,7 +10,7 @@
 let inputsArray = [];
 let inputsArrayFirstItem = 0;
 let inputsArrayLastItem = 0;
-let lastFullNumber = [];
+let lastInputNumber = [];
 
 let screenNormalOutput = 0;
 let screenSmallOutput = 0;
@@ -23,47 +23,54 @@ let calculationResult = 0;
 
 // *  01. Functions  *
 
-function showOutput() {
-    // Normal
-    document.getElementById('output-normal').innerHTML = screenNormalOutput;
-    // Small
-    document.getElementById('output-small').innerHTML = screenSmallOutput;
-
-    log();
-}
-
 function storeValue(buttonValue) {
     inputsArray.push(buttonValue);
-    lastFullNumber.push(buttonValue);
+    lastInputNumber.push(buttonValue);
 
+    calculateInputsArray();
+}
+
+// This will make the calculations display more fluid while you are entering numbers and operators
+function calculateInputsArray() {
     inputsArrayLastItem = inputsArray[inputsArray.length - 1];
     inputsArrayFirstItem = inputsArray[0];
 
-    //Outputs display
     if (typeof inputsArrayLastItem == 'number') {
-        console.log("Last input is a number");
-        screenNormalOutput = lastFullNumber.join("");
-        calculationResult = eval(inputsArray.join("")); //!
+        // Creating lastInputNumber[] helped me to separate numbers from operators without messing up the {complete} inputsArray[]
+        // while also allowing me to display the last input number correctly {44 got displayed as 4, per example}
+        screenNormalOutput = lastInputNumber.join("");
+        // The calculation of inputsArray[] will be made, but not displayed
+        calculationResult = eval(inputsArray.join(""));
     } else {
-        console.log("Last input isn't a number");
-        lastFullNumber = [];
+        // If inputsArrayLastItem isn't a number, per example
+        // {inputsArray = [44, +]}
+        // {inputsArrayLastItem = [+]}   
+        // lastInputNumber[] will get emptied so a new number can be input later
+        lastInputNumber = [];
+        // The entire input secuence will be saved to screenSmallOutput
+        screenSmallOutput = inputsArray.join("");
 
+        // This will prevent to get a display error if calculationResult is 0
         if (calculationResult == 0) {
+            // display the firstItem in inputArray {screenNormalOutput = 44}
+            //  inputsArray = [44, +]
+            //  calculationResult == 0
+            //  inputsArrayFirstItem = [44]
             screenNormalOutput = inputsArrayFirstItem;
-            screenSmallOutput  = inputsArray.join("");
         } else {
+            // display the calculationResult {screenNormalOutput = 66}
+            //  inputsArray = [44, +, 22]
+            //  calculationResult = 66
             screenNormalOutput = calculationResult;
-            screenSmallOutput  = inputsArray.join("");
         }
     }
 
     showOutput();
 }
 
-function calculateAllArrayInputs() {
-    calculationResult = eval(inputsArray.join("")); // !
-
-    screenNormalOutput = calculationResult; // !
+function calculateAllInputsArray() {
+    calculationResult = eval(inputsArray.join(""));
+    screenNormalOutput = calculationResult;
     screenSmallOutput = "";
     inputsArray = [calculationResult];
 
@@ -97,9 +104,16 @@ function deleteAllValues() {
     screenNormalOutput = 0;
     screenSmallOutput = "";
     calculationResult = 0;
-    lastFullNumber = [];
+    lastInputNumber = [];
 
     showOutput();
+}
+
+function showOutput() {
+    document.getElementById('output-normal').innerHTML = screenNormalOutput;
+    document.getElementById('output-small').innerHTML = screenSmallOutput;
+
+    log();
 }
 
 function log() {
@@ -108,6 +122,7 @@ function log() {
     console.log("Current value of screenNormalOutput: " + screenNormalOutput);
     console.log("Current value of screenSmallOutput: "  + screenSmallOutput);
     console.log("Current value of calculationResult: "  + calculationResult);
+    console.log("Current value of lastInputNumber: "  + lastInputNumber);
     console.log('--------------------------------------------------');
 }
 
