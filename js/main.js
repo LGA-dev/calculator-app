@@ -15,6 +15,9 @@ let lastInputNumber = [];
 let screenNormalOutput = 0;
 let screenSmallOutput = 0;
 
+let screenNormalDisplay = document.getElementById('output-normal');
+let screenSmallDisplay = document.getElementById('output-small');
+
 let calculationResult = 0;
 
 // *  00. Global variables *
@@ -30,27 +33,29 @@ function storeValue(buttonValue) {
     calculateInputsArray();
 }
 
-// This will make the calculations display more fluid while you are entering numbers and operators
+// This will help to make the calculations display more fluid while you are entering numbers and operators
 function calculateInputsArray() {
     inputsArrayLastItem = inputsArray[inputsArray.length - 1];
     inputsArrayFirstItem = inputsArray[0];
 
     if (typeof inputsArrayLastItem == 'number') {
-        // Creating lastInputNumber[] helped me to separate numbers from operators without messing up the {complete} inputsArray[]
-        // while also allowing me to display the last input number correctly {44 got displayed as 4, per example}
+        // Creating lastInputNumber[] helped me to display the last input number correctly {44 got displayed as 4, per example}
+        // while also allowing me to separate numbers from operators without messing up the {complete} inputsArray[]
         screenNormalOutput = lastInputNumber.join("");
-        // The calculation of inputsArray[] will be made, but not displayed
+        // The calculation of the items inside inputsArray[] will be made
+        // but it will not be displayed in the screen until the last item from the inputs array is not a number
         calculationResult = eval(inputsArray.join(""));
     } else {
-        // If inputsArrayLastItem isn't a number, per example
-        // {inputsArray = [44, +]}
-        // {inputsArrayLastItem = [+]}   
-        // lastInputNumber[] will get emptied so a new number can be input later
+        // This means that whenever an operator is input, the result of calculationResult will be show 
+        // also lastInputNumber[] will get emptied so a new number can be input later
         lastInputNumber = [];
-        // The entire input secuence will be saved to screenSmallOutput
+        // and the entire numbers input sequence will be saved to screenSmallOutput
         screenSmallOutput = inputsArray.join("");
 
-        // This will prevent to get a display error if calculationResult is 0
+        // This will prevent to get a display error while showing the numbers from the calculation result
+        // calculationResult being 0 means that there wasn't a calculation done yet
+        // if that happens then it will grab the first item inside the inputs array instead of the calculation result
+        // until the calculation result is given a value, it will always use this value instead
         if (calculationResult == 0) {
             // display the firstItem in inputArray {screenNormalOutput = 44}
             //  inputsArray = [44, +]
@@ -72,6 +77,7 @@ function calculateAllInputsArray() {
     calculationResult = eval(inputsArray.join(""));
     screenNormalOutput = calculationResult;
     screenSmallOutput = "";
+    lastInputNumber = [];
     inputsArray = [calculationResult];
 
     showOutput();
@@ -105,19 +111,28 @@ function deleteAllValues() {
 }
 
 function showOutput() {
+    //Grab the values of screenNormalOutput and screenSmallOutput returned from calculateInputsArray()
+    //and replaces the numbers in the screen with each of the values
     document.getElementById('output-normal').innerHTML = screenNormalOutput;
-    document.getElementById('output-small').innerHTML = screenSmallOutput;
+    document.getElementById('output-small').innerHTML  =  screenSmallOutput;
+
+    //This animation would help to differentiate the last input number from the final calculation result
+    if (lastInputNumber != 0) {
+        screenNormalDisplay.classList.add('fadeInOutAnimation');
+    } else {
+        screenNormalDisplay.classList.remove('fadeInOutAnimation');
+    }
 
     log();
 }
 
 function log() {
     console.log('--------------------------------------------------');
-    console.log("Current value of inputsArray: "        + inputsArray);
+    console.log("Current value of inputsArray: "        +        inputsArray);
     console.log("Current value of screenNormalOutput: " + screenNormalOutput);
-    console.log("Current value of screenSmallOutput: "  + screenSmallOutput);
-    console.log("Current value of calculationResult: "  + calculationResult);
-    console.log("Current value of lastInputNumber: "  + lastInputNumber);
+    console.log("Current value of screenSmallOutput: "  +  screenSmallOutput);
+    console.log("Current value of calculationResult: "  +  calculationResult);
+    console.log("Current value of lastInputNumber: "  +      lastInputNumber);
     console.log('--------------------------------------------------');
 }
 

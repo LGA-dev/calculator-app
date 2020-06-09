@@ -4,6 +4,7 @@
 01. Body
 02. Wrapper
 03. Calculator card
+04. Animations
 ====================================================== 
 */
 
@@ -227,3 +228,21 @@ body {
 		/* Grid Areas */
 	
 /* 03. Calculator card */
+
+
+
+/* 04. Animations */
+
+@keyframes fadeinout {
+	0%   {opacity:0;}
+	/* 25%  {opacity:0.25;} */
+	50%  {opacity:1;}
+	/* 75%  {opacity:0.75;} */
+	100% {opacity:0;}
+}
+
+.fadeInOutAnimation {
+	animation: fadeinout 1.5s infinite;
+}
+
+/* 04. Animations */
