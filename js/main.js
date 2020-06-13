@@ -20,6 +20,9 @@ let screenSmallDisplay = document.getElementById('output-small');
 
 let calculationResult = 0;
 
+let maximumInputs = 8;
+let numberOfInputs = 0;
+
 // *  00. Global variables *
 
 
@@ -27,10 +30,29 @@ let calculationResult = 0;
 // *  01. Functions  *
 
 function storeValue(buttonValue) {
-    inputsArray.push(buttonValue);
-    lastInputNumber.push(buttonValue);
+
+    if (numberOfInputs < maximumInputs) {
+        // If the array size is less than the maximum inputs
+        // Allow input
+        lastInputNumber.push(buttonValue);
+        inputsArray.push(buttonValue);
+        numberOfInputs++;
+    } else if (inputsArray.length == maximumInputs && typeof buttonValue == 'string'){
+        // If the array size is equal than the maximum inputs
+        // and
+        // If the type of button value is a string
+        // Allow input
+        // and reset numberOfInputs
+        lastInputNumber.push(buttonValue);
+        inputsArray.push(buttonValue);
+        numberOfInputs = 0;
+    } else {
+        // Don't allow inputs
+        return
+    }
 
     calculateInputsArray();
+    showOutput();
 }
 
 // This will help to make the calculations display more fluid while you are entering numbers and operators
@@ -69,8 +91,6 @@ function calculateInputsArray() {
             screenNormalOutput = calculationResult;
         }
     }
-
-    showOutput();
 }
 
 function calculateAllInputsArray() {
@@ -133,6 +153,8 @@ function log() {
     console.log("Current value of screenSmallOutput: "  +  screenSmallOutput);
     console.log("Current value of calculationResult: "  +  calculationResult);
     console.log("Current value of lastInputNumber: "  +      lastInputNumber);
+    console.log("Current value of maximumInputs: "  +          maximumInputs);
+    console.log("Current value of numberOfInputs: "  +        numberOfInputs);
     console.log('--------------------------------------------------');
 }
 
