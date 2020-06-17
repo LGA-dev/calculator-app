@@ -37,7 +37,7 @@ function storeValue(buttonValue) {
         lastInputNumber.push(buttonValue);
         inputsArray.push(buttonValue);
         numberOfInputs++;
-    } else if (inputsArray.length == maximumInputs && typeof buttonValue == 'string'){
+    } else if (numberOfInputs == maximumInputs && typeof buttonValue == 'string'){
         // If the array size is equal than the maximum inputs
         // and
         // If the type of button value is a string
@@ -90,6 +90,8 @@ function calculateInputsArray() {
             //  calculationResult = 66
             screenNormalOutput = calculationResult;
         }
+        // Resets number of inputs after something that isn't a number is input
+        numberOfInputs = 0;
     }
 }
 
@@ -99,6 +101,7 @@ function calculateAllInputsArray() {
     screenSmallOutput = "";
     lastInputNumber = [];
     inputsArray = [calculationResult];
+    numberOfInputs = 0;
 
     showOutput();
 }
@@ -116,7 +119,10 @@ function squareRoot() {
 
 function deleteLastValue() {
     inputsArray.pop();
+    lastInputNumber.pop();
+    numberOfInputs--;
 
+    calculateInputsArray();
     showOutput();
 }
 
@@ -126,7 +132,8 @@ function deleteAllValues() {
     screenSmallOutput = "";
     calculationResult = 0;
     lastInputNumber = [];
-
+    numberOfInputs = 0;
+    
     showOutput();
 }
 
